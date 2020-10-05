@@ -1,0 +1,28 @@
+//Given a string and a pattern, find the starting indices of all occurrences of
+//the pattern in the string. For example, given the string "abracadabra" and the 
+//pattern "abr", you should return [0, 7].
+
+import java.util.*;
+class Main 
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        List<Integer> al=new ArrayList<Integer>();
+        
+        String x=sc.nextLine();  // 
+        String y=sc.nextLine();
+        int n=x.length()-y.length()+1;
+        
+        for(int i=0;i<n;i++)
+        {
+            if(x.substring(i,i+y.length()).equals(y))
+            {
+              al.add(i);
+            }
+        }
+        
+        System.out.println(al);
+    }
+}

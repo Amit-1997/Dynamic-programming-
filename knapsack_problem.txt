@@ -1,0 +1,39 @@
+// knapsack problem
+
+import java.util.*;
+class Main 
+{
+    static int knapsack(int[] wt,int[] val, int weight, int n)
+    {
+        if(n==0 || weight==0)
+        return 0;
+        
+        else if(wt[n-1]<weight)
+        return Math.max(val[n-1]+knapsack(wt,val,weight-wt[n-1],n-1),knapsack(wt,val,weight,n-1));
+        
+        
+        else
+        return knapsack(wt,val,weight,n-1);
+    }
+    
+   public static void main(String[] args)
+   {
+       Scanner sc=new Scanner(System.in);
+       int weight=sc.nextInt();// weight of knapsack bag
+       int n=sc.nextInt(); //number of elements 
+       int[] wt=new int[n]; // this is weight array
+       int[] val=new int[n] ;// value of product array
+       
+       for(int i=0;i<n;i++)
+       {
+           wt[i]=sc.nextInt();
+       }
+       for(int i=0;i<n;i++)
+       {
+           val[i]=sc.nextInt();
+       }
+       
+       int result=knapsack(wt,val,weight,n);
+       System.out.println(result);
+   }
+}

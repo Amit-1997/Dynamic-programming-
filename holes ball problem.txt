@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();    // enter the number of holes
+        int[] h=new int[n+1];
+        int[] cap=new int[n+1];
+        
+        for(int i=0;i<n;i++)
+        {
+            h[i]=sc.nextInt();    // give the diameter of holes
+            cap[i]=i+1;            // cap[1]=1, cap[2]=2, cap[3]=3
+        }
+        
+        int m=sc.nextInt();   // number of balls 
+        int ctrl=0;
+        int[] b=new int[m+1];
+        for(int i=0;i<m;i++)
+        {
+            ctrl=0;
+            b[i]=sc.nextInt();
+       
+            for(int j=n-1;j>=0;j--)
+            {
+                if(b[i]<=h[j] && cap[j]!=0)
+                {
+                    cap[j]--;
+                    System.out.print(j+1+" ");
+                    ctrl=1;
+                    break;
+                }
+            }
+            if(ctrl==0)
+        {
+            System.out.print(0+" ");
+        }
+        }
+    }
+}

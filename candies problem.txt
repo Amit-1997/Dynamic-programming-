@@ -1,0 +1,43 @@
+// min. time taken for storing all the candies into a single box
+
+import java.util.*;
+
+class Main 
+{
+    
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();  // number of test cases
+        int n=sc.nextInt(); // for number of box
+        int[] candies=new int[n]; // number of candies in each box
+        List<Integer> Time=new ArrayList<>();
+        
+        while(t>0 )
+        {
+        
+        for(int i=0;i<n;i++)
+        {
+            candies[i]=sc.nextInt();
+        }
+        
+        int sum=candies[0];
+        
+        for(int i=1;i<n;i++)
+        {
+            sum=sum+candies[i];
+            Time.add(sum);
+        }
+        int min_time=0;
+      for(int i=0;i<Time.size();i++)
+      {
+          min_time=min_time+Time.get(i);
+       
+          
+      }
+     System.out.println(min_time);
+     
+        }
+     
+    }
+}

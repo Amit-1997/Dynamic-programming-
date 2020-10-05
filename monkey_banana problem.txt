@@ -1,0 +1,40 @@
+import java.util.*;
+class Main 
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();     // number of trees
+        int k=sc.nextInt();     // time the monkey have
+        
+        int[] Num_of_banana=new int[n];   // number of banana in each trees
+        int[] sum_array=new int[n-k+1];
+        
+        for(int i=0;i<n;i++)
+        {
+            Num_of_banana[i]=sc.nextInt();
+        }
+        int count=0;
+       for(int i=0;i<n-k+1;i++)
+       {
+           for(int j=i;j<k+i;j++)
+           {
+            count=count+Num_of_banana[j];
+              
+           }
+           sum_array[i]=count;
+           count=0;
+       }
+       int max=sum_array[0];
+       for(int i=1;i<n-k+1;i++)
+       {
+          if(max<sum_array[i])
+          {
+              max=sum_array[i];
+          }
+       }
+       
+       System.out.println(max);
+        
+    }
+}

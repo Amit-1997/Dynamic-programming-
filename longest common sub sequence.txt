@@ -1,0 +1,45 @@
+// programme to find the size of longest common sub-sequence
+public class Main
+{
+     static int lcs(char[] A, char[] B, int m, int n)
+    {
+        int[][] c=new int[m][n];
+        for(int i=0;i<n;i++)
+        {
+        c[0][i]=0;
+        }
+        
+        for(int j=0;j<n;j++)
+        {
+        c[0][j]=0;
+        }
+       for(int i=1;i<m;i++)
+       {
+           for(int j=1;j<n;j++)
+           {
+               if(A[i]==B[j])
+               {
+                   c[i][j]=1+c[i-1][j-1];
+               }
+               else{
+                   c[i][j]=Math.max(c[i-1][j],c[i][j-1]);
+               }
+           }
+       }
+       
+       return c[m-1][n-1];
+        
+        
+    }
+    
+	public static void main(String[] args) {
+		String str1="#AGGTAB";
+		String str2="$GXTXAYB";
+		char[] A=str1.toCharArray();
+		char[] B=str2.toCharArray();
+		int m = A.length;   // size of 1st string
+        int n = B.length;  // size of 2nd string
+        
+        System.out.println(lcs(A,B,m,n));
+	}
+}
